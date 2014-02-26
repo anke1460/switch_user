@@ -45,9 +45,10 @@ module SwitchUser
       end
 
       def remember_current_user(remember)
-        if remember
+        # The frontend operate one time to remember original user
+        if remember && self.original_user.nil?
           self.original_user = current_user
-        else
+        elsif remember.eql?(false)
           clear_original_user
         end
       end

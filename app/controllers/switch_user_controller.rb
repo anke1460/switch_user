@@ -12,8 +12,8 @@ class SwitchUserController < ApplicationController
     if SwitchUser.switch_back
       provider.remember_current_user(params[:remember] == "true")
     end
-
-    redirect_to(SwitchUser.redirect_path.call(request, params))
+    render json: { success: true }
+    # redirect_to(SwitchUser.redirect_path.call(request, params))
   end
 
   private
